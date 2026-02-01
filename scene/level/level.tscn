@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://bgr6n1bk33iqd"]
+
+[ext_resource type="PackedScene" uid="uid://djhunsvdc3t5i" path="res://scene/entities/player.tscn" id="1_1c01b"]
+[ext_resource type="Script" uid="uid://cq8yefm003w7g" path="res://scene/level/level.gd" id="1_hm7p5"]
+[ext_resource type="Texture2D" uid="uid://umouuttstq53" path="res://icon.svg" id="2_5lpb7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dmrcx"]
+size = Vector2(414, 138)
+
+[node name="Level" type="Node2D" unique_id=460554310]
+script = ExtResource("1_hm7p5")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=2077333726]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1510698283]
+position = Vector2(230, 158)
+shape = SubResource("RectangleShape2D_dmrcx")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=420469113]
+position = Vector2(231.5, 160.5)
+scale = Vector2(3.2421875, 1.1171875)
+texture = ExtResource("2_5lpb7")
+
+[node name="Entities" type="Node2D" parent="." unique_id=1659823432]
+
+[node name="player" parent="Entities" unique_id=1323880975 instance=ExtResource("1_1c01b")]
+position = Vector2(176, 62)
+
+[node name="Bullets" type="Node2D" parent="." unique_id=1263342620]
+
+[connection signal="shoot" from="Entities/player" to="." method="_on_player_shoot"]
